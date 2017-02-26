@@ -1,0 +1,131 @@
+10.	* Диамант
+Напишете програма, която въвежда цяло число n (1 ≤ n ≤ 100) и печата диамант с размер n като в примерите по-долу:
+вход	изход		вход	изход		вход	изход		вход	изход		вход	изход
+1	
+*		
+2	
+**		
+3	
+-*-
+*-*
+-*-		
+4
+-**-
+*--*
+-**-		
+5	
+--*--
+-*-*-
+*---*
+-*-*-
+--*--
+
+вход	изход		вход	изход		вход	изход		вход	изход
+6	
+--**--
+-*--*-
+*----*
+-*--*-
+--**--		
+7	
+---*---
+--*-*--
+-*---*-
+*-----*
+-*---*-
+--*-*--
+---*---		
+8	
+---**---
+--*--*--
+-*----*-
+*------*
+-*----*-
+--*--*--
+---**---		
+9	
+----*----
+---*-*---
+--*---*--
+-*-----*-
+*-------*
+-*-----*-
+--*---*--
+---*-*---
+----*----
+Тествайте решението си в judge системата: https://judge.softuni.bg/Contests/Practice/Index/155#9
+
+
+import java.util.Scanner;
+
+public class exam {
+
+	     public static void main(String[] args) {
+	    	 
+	    	 
+	    	 Scanner scan = new Scanner(System.in);
+	    	 int n = Integer.parseInt(scan.nextLine());
+	    	 scan.close();
+	    	 
+	    	
+	    	 String star = "*";
+	    	 int c = 0;
+	    	 int b = n/2 - 1;
+	    	 int d = b + 1;
+	    	 if(n % 2 == 0 && n < 3) {
+    	         System.out.println(star + star);
+    		 }else if(n % 2 != 0 && n < 3) {
+    	         System.out.println(star);
+    		 }else if (n > 2) {	
+    			 if(n % 2 != 0) {
+        	         System.out.println(line(d) + star + line(d));
+    			 }
+    			 if(n % 2 == 0) {
+					 for (int i = 1; i < (n + 2)/2; i++) {
+	    	              System.out.println(line(b) + star +
+	    	        		  line(c) + star + line(b));
+	    	                  c += 2;
+				              b--;				              
+					 }
+					 c -= 4;
+					 b += 2;
+					 for (int i = 1; i < (n + 1)/2; i++) {						 
+						 System.out.println(line(b) + star +
+		    	        		  line(c) + star + line(b));
+		    	                  c -= 2;
+					              b++;						 
+					 }
+					 
+	    		 }else {
+	    			 for (int i = 1; i < (n + 1)/2; i++) {
+	    			      System.out.println(line(b) + star +
+	    	        	  line(c + 1) + star + line(b));	    		
+	    	              c += 2;
+				          b--;
+	    			 }
+	    			 c -= 4;
+	    			 b += 2;
+	    			 for (int i = 1; i < (n)/2; i++) {
+	    			      System.out.println(line(b) + star +
+	    	        	  line(c + 1) + star + line(b));	    		
+	    	              c -= 2;
+				          b++;
+	    			 }
+	    		 }
+    			 if(n % 2 != 0) {
+        	         System.out.println(line(d) + star + line(d));
+    			 }
+			 }	
+	    	 
+	     }
+
+
+		private static String line(int a) {
+			
+			String line = "";
+			for (int i = 0; i < a; i++) {
+				line += "-";
+			}
+			return line;
+		}
+    }

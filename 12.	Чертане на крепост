@@ -1,0 +1,96 @@
+12.	Чертане на крепост
+Пета задача от междинния изпит на 6 март 2016. Тествайте решението си тук.
+Да се напише програма, която прочита от конзолата цяло число n и чертае крепост с ширина 2 * n колони и височина n реда като в примерите по-долу. Лявата и дясната колона във вътрешността си са широки n / 2.
+Вход
+Входът е цяло число n в интервала [3…1000].
+Изход
+Да се отпечатат на конзолата n текстови реда, изобразяващи крепостта, точно както в примерите.
+Примерен вход и изход
+вход	изход		вход	изход		вход	изход		вход	изход
+3	
+/^\/^\
+|    |
+\_/\_/		
+4	
+/^^\/^^\
+|      |
+|      |
+\__/\__/		
+5	
+/^^\__/^^\
+|        |
+|        |
+|   __   |
+\__/  \__/		
+8	
+/^^^^\____/^^^^\
+|              |
+|              |
+|              |
+|              |
+|              |
+|     ____     |
+\____/    \____/
+
+
+package zad;
+
+import java.util.Scanner;
+
+public class Zad {
+
+	  public static void main(String[] args) {
+		  
+		 Scanner scan = new Scanner(System.in);
+		 int n = Integer.parseInt(scan.nextLine());
+		 scan.close();
+		 
+		 String vertical = "|";
+		 String slashR = "/";
+		 String slashL = "\\";
+		 String line = "_";
+		 String stepen = "^";
+		 
+		 stepen = space(n/2).replace(" ", "^");
+		 line = space(n/2).replace(" ", "_");
+		 int spaceF = (2*(n/2 + 1) + n/2);
+		 if(n <= 4) {
+			 line = "";
+		 }
+		 System.out.println(slashR + stepen + slashL + line +
+				 slashR + stepen + slashL);
+		 for (int i = 0; i < n-3; i++) {
+			 if(n == 4) {
+				 spaceF = spaceF - 2;	
+			 }
+			 System.out.println(vertical + space(spaceF) + vertical);
+
+		}
+		
+		 System.out.println(vertical + space(n/2 + 1) + line +
+				 space(n/2+1) + vertical);
+		 String lineD = stepen.replace("^", "_");
+		 String greaterFour = space(n/2);
+		 if(n <= 4) {
+			 greaterFour = "";
+		 }
+		 System.out.println(slashL + lineD + slashR + 
+				 greaterFour+ slashL + lineD + slashR); 
+		  
+	}
+
+	private static String space(int n) {
+		
+		String space = "";
+		for (int i = 0; i < n; i++) {
+			space += " "; 
+		}
+		return space;
+	}
+ }
+
+
+ 
+   
+
+		  
